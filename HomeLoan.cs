@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace PocketDebts
 {
-    internal class HomeLoan
+    internal class HomeLoan : Methods
     {
+
     }
 }
