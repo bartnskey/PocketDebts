@@ -5,10 +5,12 @@ using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LoanKnot
+namespace PocketDebts
 {
     abstract class Loan
     {
+        public string loanType { get; set; }
+
         public double loanAmount { get; set; }
 
         public int instalmentQuantity { get; set; }
@@ -35,6 +37,10 @@ namespace LoanKnot
 
         public int monthsPassed { get; set; }
 
+        public virtual int CheckInstalmentQuantity()
+        {
+            return this.instalmentQuantity;
+        }
 
         public void RealInterestRate()
         {
@@ -43,7 +49,8 @@ namespace LoanKnot
 
         public void InterestAmount()
         {
-            double interestAmount = loanAmount * interestRate / 12;
+            double interestAmount = loanAmount * (interestRate / 100) / 12;
+            Console.WriteLine($"interestAmount is equal to {interestAmount}");
         }
 
         public void InterestAmountOverpayment()
