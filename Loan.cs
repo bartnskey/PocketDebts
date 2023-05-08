@@ -9,7 +9,7 @@ namespace LoanKnot
 {
     abstract class Loan
     {
-        public int loanAmount { get; set; }
+        public double loanAmount { get; set; }
 
         public int instalmentQuantity { get; set; }
 
@@ -25,7 +25,7 @@ namespace LoanKnot
 
         public double interestAmount { get; set; }
 
-        public int overpayment { get; set; }
+        public double overpayment { get; set; }
 
         public double totalLoanAmount { get; set; }
 
@@ -78,7 +78,12 @@ namespace LoanKnot
 
         public void LessInstalmentAmountOverpayment()
         {
-            var lessInstalmentAmountOverpayment = (loanAmount * interestRate / 100 / 12 * (1 + interestRate / 100 / 12) ^ monthsPassed) / ((1 + interestRate / 100 / 12) ^ monthsPassed - 1);
+            double lessInstalmentAmountOverpayment = (loanAmount * (interestRate / 100 / 12) * Math.Pow(1 + interestRate / 100 / 12, monthsPassed) / (Math.Pow(1 + interestRate / 100 / 12, monthsPassed) - 1));
+        }
+
+        public void ReducePeriodOfLoanPayment()
+        {
+            double reducePeriodOfLoanPayment = -Math.Log(1 - ((interestRate / 12) * loanAmount) / instalmentAmount) / Math.Log(1 + interestRate / 12);
         }
     }
 }
