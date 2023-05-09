@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace PocketDebts
 {
-    abstract class Loan
+    class Loan
     {
         public string loanType { get; set; }
 

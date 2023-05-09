@@ -10,17 +10,17 @@ namespace PocketDebts
     {
         private double interestAmount;
 
-        public double interestRateOverpayment { get; set; }
+        private double interestRateOverpayment { get; set; }
 
-        public double overpayment { get; set; }
+        private double overpayment { get; set; }
 
-        public double totalLoanAmount { get; set; }
+        private double totalLoanAmount { get; set; }
 
-        public double totalInterestAmount { get; set; }
+        private double totalInterestAmount { get; set; }
 
         private double capitalAmount;
 
-        public int monthsPassed { get; set; }
+        private int monthsPassed { get; set; }
 
         public virtual int CheckInstalmentQuantity()
         {
