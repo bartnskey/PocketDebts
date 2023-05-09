@@ -8,6 +8,6 @@ namespace PocketDebts
 {
     class OtherPayments
     {
-
+        
     }
 }

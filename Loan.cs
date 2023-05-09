@@ -24,5 +24,32 @@ namespace PocketDebts
         public string loanFeeType { get; set; }
 
         public double loanFee { get; set; }
+
+        public void LoanParametersFromUser()
+        {
+            Console.WriteLine("Enter loan type: 1 - Home loan, 2 - Consumer loan, 3 - Other payments");
+            loanType = Console.ReadLine();
+
+            Console.WriteLine("Enter loan amount");
+            loanAmount = double.Parse(Console.ReadLine());
+
+            Console.WriteLine("Enter instalment type: 1 - variable, 2 - fixed");
+            instalmentType = Console.ReadLine();
+
+            Console.WriteLine("Enter instalment quantity");
+            instalmentQuantity = int.Parse(Console.ReadLine());
+
+            Console.WriteLine("Enter instalment amount");
+            instalmentAmount = double.Parse(Console.ReadLine());
+
+            Console.WriteLine("Enter insterest rate");
+            interestRate = double.Parse(Console.ReadLine());
+
+            Console.WriteLine("Enter loan fee type: 1 - percent, 2 - amount");
+            loanFeeType = Console.ReadLine();
+
+            Console.WriteLine("Enter loan fee");
+            loanFee = double.Parse(Console.ReadLine());
+        }
     }
 }
