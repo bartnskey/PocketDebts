@@ -12,7 +12,7 @@ namespace PocketDebts
 
             if (loan.loanType == "1")
             {
-                HomeLoan homeLoan = new HomeLoan();
+                HomeLoan homeLoan = new HomeLoan(loan.instalmentQuantity);
 
                 homeLoan.InterestAmount(out double interestAmount);
                 homeLoan.CapitalAmount(interestAmount, out double capitalAmount);

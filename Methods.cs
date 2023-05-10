@@ -8,7 +8,9 @@ namespace PocketDebts
 {
     class Methods : Loan
     {
-        private double interestAmount;
+        private double interestAmount { get; set; }
+
+        private double interestAmountOverpayment { get; set; }
 
         private double interestRateOverpayment { get; set; }
 
@@ -18,14 +20,17 @@ namespace PocketDebts
 
         private double totalInterestAmount { get; set; }
 
-        private double capitalAmount;
+        private double capitalAmount { get; set; }
 
         private int monthsPassed { get; set; }
 
-        public virtual int CheckInstalmentQuantity()
-        {
-            return this.instalmentQuantity;
-        }
+        private double loanFeeValue { get; set; }
+
+        private double loanFeeValueOverpayment { get; set; }
+
+        private double lessInstalmentAmountOverpayment { get; set; }
+
+        private double reducePeriodOfLoanPayment { get; set; }
 
         public void RealInterestRate()
         {
@@ -58,7 +63,7 @@ namespace PocketDebts
 
         public void LoanFeeValueOverpayment()
         {
-            double loadnFeeValueOverpayment = overpayment * interestRateOverpayment;
+            double loanFeeValueOverpayment = overpayment * interestRateOverpayment;
         }
 
         public void TotalLoanAmount()
