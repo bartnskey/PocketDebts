@@ -8,10 +8,6 @@ namespace PocketDebts
 {
     class Methods : Loan
     {
-        private double interestAmount { get; set; }
-
-        private double interestAmountOverpayment { get; set; }
-
         private double interestRateOverpayment { get; set; }
 
         private double overpayment { get; set; }
@@ -24,13 +20,32 @@ namespace PocketDebts
 
         private int monthsPassed { get; set; }
 
-        private double loanFeeValue { get; set; }
+        public void LoanParametersFromUser()
+        {
+            Console.WriteLine("Enter loan type: 1 - Home loan, 2 - Consumer loan, 3 - Other payments");
+            loanType = Console.ReadLine();
 
-        private double loanFeeValueOverpayment { get; set; }
+            Console.WriteLine("Enter loan amount");
+            loanAmount = double.Parse(Console.ReadLine());
 
-        private double lessInstalmentAmountOverpayment { get; set; }
+            Console.WriteLine("Enter instalment type: 1 - variable, 2 - fixed");
+            instalmentType = Console.ReadLine();
 
-        private double reducePeriodOfLoanPayment { get; set; }
+            Console.WriteLine("Enter instalment quantity");
+            instalmentQuantity = int.Parse(Console.ReadLine());
+
+            Console.WriteLine("Enter instalment amount");
+            instalmentAmount = double.Parse(Console.ReadLine());
+
+            Console.WriteLine("Enter insterest rate");
+            interestRate = double.Parse(Console.ReadLine());
+
+            Console.WriteLine("Enter loan fee type: 1 - percent, 2 - amount");
+            loanFeeType = Console.ReadLine();
+
+            Console.WriteLine("Enter loan fee");
+            loanFee = double.Parse(Console.ReadLine());
+        }
 
         public void RealInterestRate()
         {

@@ -7,21 +7,21 @@ namespace PocketDebts
     {
         static void Main(string[] args)
         {
-            Loan loan = new Loan();
-            loan.LoanParametersFromUser();
+            Methods methods = new Methods();
+            methods.LoanParametersFromUser();
 
-            if (loan.loanType == "1")
+            if (methods.loanType == "1")
             {
-                HomeLoan homeLoan = new HomeLoan(loan.instalmentQuantity);
+                HomeLoan homeLoan = new HomeLoan(methods.instalmentQuantity);
 
                 homeLoan.InterestAmount(out double interestAmount);
                 homeLoan.CapitalAmount(interestAmount, out double capitalAmount);
             }
-            else if (loan.loanType == "2")
+            else if (methods.loanType == "2")
             {
                 ConsumerLoan consumerLoan = new ConsumerLoan();
             }
-            else if (loan.loanType == "3")
+            else if (methods.loanType == "3")
             {
                 OtherPayments otherPayments = new OtherPayments();
             }

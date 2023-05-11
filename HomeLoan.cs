@@ -21,7 +21,7 @@ namespace PocketDebts
             {
                 if (value > 420)
                     Console.WriteLine("There are not existing home loans with that length, please try again");
-                else if (value < 12)
+                else if (value < 60)
                     Console.WriteLine("There are not existing home loans with that length, please try again");
                 else
                     instalmentQuantity = value;
