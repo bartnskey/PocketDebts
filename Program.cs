@@ -12,18 +12,15 @@ namespace PocketDebts
 
             if (methods.loanType == "1")
             {
-                HomeLoan homeLoan = new HomeLoan(methods.instalmentQuantity);
-
-                homeLoan.InterestAmount(out double interestAmount);
-                homeLoan.CapitalAmount(interestAmount, out double capitalAmount);
+                Loan home = new Loan();
             }
             else if (methods.loanType == "2")
             {
-                ConsumerLoan consumerLoan = new ConsumerLoan();
+                Loan consumer = new Loan();
             }
             else if (methods.loanType == "3")
             {
-                OtherPayments otherPayments = new OtherPayments();
+                Loan other = new Loan();
             }
             else
             {

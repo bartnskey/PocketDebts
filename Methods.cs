@@ -20,6 +20,11 @@ namespace PocketDebts
 
         private int monthsPassed { get; set; }
 
+        public Methods(string loanType) : base(loanType)
+        {
+            
+        }
+
         public void LoanParametersFromUser()
         {
             Console.WriteLine("Enter loan type: 1 - Home loan, 2 - Consumer loan, 3 - Other payments");
