@@ -20,11 +20,6 @@ namespace PocketDebts
 
         private int monthsPassed { get; set; }
 
-        public Methods(string loanType) : base(loanType)
-        {
-            
-        }
-
         public void LoanParametersFromUser()
         {
             Console.WriteLine("Enter loan type: 1 - Home loan, 2 - Consumer loan, 3 - Other payments");
@@ -32,9 +27,6 @@ namespace PocketDebts
 
             Console.WriteLine("Enter loan amount");
             loanAmount = double.Parse(Console.ReadLine());
-
-            Console.WriteLine("Enter instalment type: 1 - variable, 2 - fixed");
-            instalmentType = Console.ReadLine();
 
             Console.WriteLine("Enter instalment quantity");
             instalmentQuantity = int.Parse(Console.ReadLine());
@@ -52,16 +44,37 @@ namespace PocketDebts
             loanFee = double.Parse(Console.ReadLine());
         }
 
-        public void RealInterestRate()
+        public double TotalLoanAmount(out double totalLoanAmount)
         {
-            double realInterestRate = totalInterestAmount / loanAmount * 100;
+            totalLoanAmount = instalmentAmount * instalmentQuantity;
+            Console.WriteLine($"totalLoanAmount is equal to {totalLoanAmount} PLN");
+            return totalLoanAmount;
+        }
+
+        public void TotalInterestAmount(out double totalInterestAmount)
+        {
+            totalInterestAmount = totalLoanAmount - loanAmount;
+            Console.WriteLine($"totalInterestAmount is equal to {totalInterestAmount} PLN");
+        }
+
+        public void RealInterestRate(out double realInterestRate)
+        {
+            realInterestRate = totalInterestAmount / loanAmount * 100;
+            Console.WriteLine($"realInterestRate is equal to {realInterestRate} %");
         }
 
         public double InterestAmount(out double interestAmount)
         {
             interestAmount = loanAmount * (interestRate / 100) / 12;
-            Console.WriteLine($"interestAmount is equal to {Math.Round(interestAmount, 2, MidpointRounding.AwayFromZero)}");
+            Console.WriteLine($"interestAmount is equal to {Math.Round(interestAmount, 2, MidpointRounding.AwayFromZero)} PLN");
             return Math.Round(interestAmount, 2, MidpointRounding.AwayFromZero);
+        }
+
+        public double CapitalAmount(double interestAmount, out double capitalAmount)
+        {
+            capitalAmount = instalmentAmount - interestAmount;
+            Console.WriteLine($"capitalAmount is equal to {Math.Round(capitalAmount, 2, MidpointRounding.AwayFromZero)} PLN");
+            return Math.Round(capitalAmount, 2, MidpointRounding.AwayFromZero);
         }
 
         public void InterestAmountOverpayment()
@@ -69,13 +82,7 @@ namespace PocketDebts
             double interestAmountOverpayment = ((loanAmount - capitalAmount - overpayment) * interestRate / 100) / 12;
         }
 
-        public double CapitalAmount(double interestAmount, out double capitalAmount)
-        {
-            capitalAmount = instalmentAmount - interestAmount;
-            Console.WriteLine($"capitalAmount is equal to {Math.Round(capitalAmount, 2, MidpointRounding.AwayFromZero)}");
-            return Math.Round(capitalAmount, 2, MidpointRounding.AwayFromZero);
-        }
-
+        
         public void LoanFeeValue()
         {
             double loanFeeValue = loanAmount * loanFee;
@@ -86,10 +93,7 @@ namespace PocketDebts
             double loanFeeValueOverpayment = overpayment * interestRateOverpayment;
         }
 
-        public void TotalLoanAmount()
-        {
-            double totalLoanAmount = instalmentAmount * instalmentQuantity;
-        }
+        
 
         public void TotalInterestAmount()
         {
